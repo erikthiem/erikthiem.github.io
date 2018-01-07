@@ -34,6 +34,8 @@
 
     <body id="page-top" class="index">
 
+      <div id="app">
+
         <!-- Navigation -->
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
             <div class="container">
@@ -92,16 +94,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
+                    <template v-for="position in positions">
+                        <div class="col-sm-4 portfolio-item">
+                            <a :href=" '#' + position.title + '_modal'" class="portfolio-link" data-toggle="modal">
+                                <div class="caption">
+                                    <div class="caption-content">
+                                        <i class="fa fa-search-plus fa-3x"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <img src="img/portfolio/covermymeds.jpg" class="img-responsive" alt="">
-                        </a>
-                    </div>
+                                <img :src="position.image" class="img-responsive" alt="">
+                            </a>
+                        </div>
+                    </template>
+
                     <div class="col-sm-4 portfolio-item">
                         <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                             <div class="caption">
@@ -253,32 +258,34 @@
         </div>
 
         <!-- Portfolio Modals -->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2>CoverMyMeds</h2>
-                                <hr class="star-primary">
-                                <a href="http://www.covermymeds.com" target="_blank">
-                                    <img src="img/portfolio/covermymeds.jpg" class="img-responsive img-centered" alt="CoverMyMeds logo">
-                                </a>
-                                <p>I am a <strong>Software Development Apprentice</strong> at CoverMyMeds, located in downtown Columbus, Ohio.</p>
-                                <p>I work designing, building, and maintaining internal Ruby on Rails web apps for our Support team.</p>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <template v-for="position in positions">
+          <div class="portfolio-modal modal fade" :id="position.title + '_modal'" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-content">
+                  <div class="close-modal" data-dismiss="modal">
+                      <div class="lr">
+                          <div class="rl">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-8 col-lg-offset-2">
+                              <div class="modal-body">
+                                  <h2>{{ position.title }}</h2>
+                                  <hr class="star-primary">
+                                  <a :href="position.website" target="_blank">
+                                    <img :src="position.image" class="img-responsive img-centered" :alt="position.title + ' logo'">
+                                  </a>
+                                  <p v-html="position.description">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </template>
+
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal">
@@ -436,6 +443,7 @@
             </div>
         </div>
 
+
         <!-- jQuery -->
         <script src="vendor/jquery/jquery.min.js"></script>
 
@@ -447,6 +455,26 @@
 
         <!-- Theme JavaScript -->
         <script src="js/freelancer.min.js"></script>
+        
+        <!-- Vue -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+        <!-- Vue App -->
+        <script>
+          var app = new Vue({
+            el: '#app',
+            data: {
+              positions: [
+                {
+                  title: 'CoverMyMeds',
+                  image: 'img/portfolio/covermymeds.jpg',
+                  website: 'http://www.covermymeds.com',
+                  description: '<p>I am a <strong>Software Development Apprentice</strong> at CoverMyMeds, located in downtown Columbus, Ohio.</p><p>I work designing, building, and maintaining internal Ruby on Rails web apps for our Support team.</p>'
+                },
+              ]
+            }
+          })
+        </script>
 
         <!-- Google Analytics -->
         <script>
@@ -458,6 +486,8 @@
           ga('create', 'UA-36377655-1', 'auto');
           ga('send', 'pageview');
         </script>
+
+      </div>
 
     </body>
 
