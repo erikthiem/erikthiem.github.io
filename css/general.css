@@ -6,10 +6,7 @@
 body {
     color: var(--decently-dark-gray);
     font-family: 'Cormorant Garamond', serif;
-}
-
-#container {
-    margin: 0 8% 0 8%;
+    font-size: 1.5em;
 }
 
 #top {
@@ -18,12 +15,4 @@ body {
 
 #top h1 {
     margin-bottom: 3%;
-}
-
-p {
-    line-height: 1.6;
-}
-
-.section {
-    margin-bottom: 5%;
 }
