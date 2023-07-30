@@ -1,0 +1,29 @@
+:root {
+    /* Colors */
+    --decently-dark-gray: #303030;
+}
+
+body {
+    color: var(--decently-dark-gray);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#container {
+    margin: 0 8% 0 8%;
+}
+
+#top {
+    text-align: center;
+}
+
+#top h1 {
+    margin-bottom: 3%;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.section {
+    margin-bottom: 5%;
+}
