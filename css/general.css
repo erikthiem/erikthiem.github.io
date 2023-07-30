@@ -1,9 +1,11 @@
 :root {
     /* Colors */
     --decently-dark-gray: #303030;
+    --nearly-white-eggshell: #fbf9f3;
 }
 
 body {
+    background-color: var(--nearly-white-eggshell);
     color: var(--decently-dark-gray);
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5em;
