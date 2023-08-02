@@ -18,3 +18,7 @@ body {
 #top h1 {
     margin-bottom: 3%;
 }
+
+em {
+    color: green;
+}
