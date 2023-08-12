@@ -22,3 +22,7 @@ body {
 em {
     color: green;
 }
+
+p {
+    line-height: 1.6;
+}
